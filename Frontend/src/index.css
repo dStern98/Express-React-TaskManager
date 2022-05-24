@@ -1,0 +1,151 @@
+:root {
+  --backgroundColor: hsl(210, 36%, 96%);
+  --color: hsl(209, 61%, 16%);
+  --radius: 0.25rem;
+  --shadow1: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow2: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --white: #fff;
+  --black: #222;
+  --transition: all 0.3s linear;
+}
+
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--color);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-center {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  margin-left:30vw; 
+  margin-right: 30vw;
+  margin-top: 5rem;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow1);
+  min-width: 250px;
+}
+
+.section-center:hover {
+  box-shadow: var(--shadow2);
+}
+
+.form-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+  padding: 2rem;
+  gap: 2px;
+}
+
+@media only screen and (max-width: 850px) {
+.form {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+}
+
+.form input {
+  border-radius: 3px;
+  background-color: var(--backgroundColor);
+}
+
+.submit-btn {
+  background: hsl(205, 86%, 81%);
+  border-color: transparent;
+  padding: 0.25rem;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  content: hsl(205, 78%, 60%);
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+.submit-btn:hover {
+  background:  hsl(205, 78%, 60%);
+  color: var(--white);
+}
+
+.loading, .alert {
+  border-radius: 1px;
+  width: 60%;
+  text-align: center;
+}
+
+.loading {
+  background-color: rgb(83, 167, 88);
+}
+
+.alert {
+  background-color: rgb(191, 112, 112);
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-list-member {
+  display: grid;
+  grid-template-columns: 7fr 3fr 0.5fr 0.5fr;
+  gap: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
+.tasks-list-member:hover {
+  background-color: var(--backgroundColor);
+}
+
+.edit-btn, .trash-btn {
+  border-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+.edit-btn {
+  color: hsl(125, 71%, 66%);
+}
+.edit-btn:hover {
+  color: hsl(125, 67%, 44%);
+}
+.trash-btn {
+  color: hsl(360, 71%, 66%);
+}
+.trash-btn:hover {
+  color:  hsl(360, 67%, 44%);
+}
+
+.low {
+  color: green;
+}
+
+.medium {
+  color: orange;
+}
+
+.high {
+  color: red;
+}
+
+.low, .high, .medium {
+  text-transform: uppercase;
+}
