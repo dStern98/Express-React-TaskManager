@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Description
 
 This is a simple MERN stack implementation of a Task Manager. The backend uses Mongoose to interact with a MongoDB database.
