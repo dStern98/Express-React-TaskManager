@@ -1,0 +1,37 @@
+version: "3"
+services:
+  express_app: 
+    build:
+      context: ./Backend
+      dockerfile: "Dockerfile.prod"
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./Backend/.env
+    networks:
+      - backend_network
+    depends_on:
+      - mongo_db 
+
+  mongo_db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=david
+      - MONGO_INITDB_ROOT_PASSWORD=somepassword
+    networks:
+      - backend_network
+    volumes:
+      - mongodb_volume:/data/db
+  
+  taskmanager_ui:
+    build:
+      context: ./Frontend
+      dockerfile: "Dockerfile.prod"
+    ports:
+     - "80:80"
+
+networks:
+  backend_network: {}
+
+volumes:
+  mongodb_volume:

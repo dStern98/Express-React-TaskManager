@@ -1,0 +1,10 @@
+FROM node:16.13.2 AS react-build
+WORKDIR /Frontend
+COPY package.json .
+RUN ["npm", "install", "--production"]
+COPY . .
+RUN ["npm", "run", "build"]
+
+FROM nginx
+EXPOSE 80
+COPY --from=react-build /Frontend/build /usr/share/nginx/html

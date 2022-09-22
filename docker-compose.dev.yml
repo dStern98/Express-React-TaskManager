@@ -1,0 +1,42 @@
+version: "3"
+services:
+  express_app: 
+    build:
+      context: ./Backend
+      dockerfile: "Dockerfile.dev"
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./Backend/.env
+    networks:
+      - backend_network
+    depends_on:
+      - mongo_db 
+    volumes:
+      - ./Backend/app:/Backend/app
+
+  mongo_db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=david
+      - MONGO_INITDB_ROOT_PASSWORD=somepassword
+    networks:
+      - backend_network
+  
+  taskmanager_ui:
+    build:
+      context: ./Frontend
+      dockerfile: "Dockerfile.dev"
+    ports:
+     - "3000:3000"
+    volumes:
+      - ./Frontend/src:/Frontend/src
+    environment:
+      - WATCHPACK_POLLING=true
+
+
+networks:
+  backend_network: {}
+
+    
+  
