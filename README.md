@@ -9,7 +9,7 @@ There is a `docker-compose.dev.yml` file for dev deployments. It uses bind mount
 to the containers, as well as `nodemon` for automatic server restart. The dev server UI is accessed on port 5000.
 To run, use the command `docker compose -f docker-compose.dev.yml up -d`. The production server builds the React bundle,
 and mounts it into an Nginx container. To run the production build, use the command `docker compose -f docker-compose.prod.yml up -d`.
-The production UI can be accessed on port 80. The production build uses a volume to preserve the mongoDB data across container deployments,
+The production UI can be accessed on port 3000. The production build uses a volume to preserve the mongoDB data across container deployments,
 while the dev version does not (data is lost when the container is destroyed).
 
 ## Setting the .env file
